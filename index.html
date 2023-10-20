@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="brand-name">BRIGHT SIDE EDUCATION</div>
+    <div class="container">
+         <div class="navbar">
+            <nav>
+             <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#aboutus">About us</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#contact">Contact</a></li>
+             </ul>
+            </nav>
+        </div>
+        <div class="row">
+             <div class="col">
+                <div class="text-content">
+                <h1>DISCOVER</h1>
+                <p>Artificial Intelligence is like a technological marvel,<br>blending the power of data,with a
+                    algorithms to mimic <br>human intelligence and performs tasks with remarkable precision...</p>
+                    <button type="button" class="discover-button">Get Started..</button>
+            </div>
+        </div>
+            <div class="col">
+                <div class="cards-section">
+                    <div class="card-row">
+                    <div class="card card1" style="margin-left: 50px;">
+                        <h5>Artificial Intelligence</h5>
+                    </div>
+                    <div class="card card2">
+                   
+                        <h5>DataScience</h5>
+                </div>
+            </div>
+            <div class="card-row second-row">
+                   <div class="card card3">
+                    <h5>Machine Learning</h5>
+                   </div>
+                   <div class="card card4">
+                    <h5>Data Structures</h5>
+                </div>
+                   </div>
+            </div>
+                <div class="courses-container">
+                <h2 class="courses-title">Courses Offered</h2> 
+                <ul class="course-list">
+                  <li>Artificial Intelligence</li>
+                  <li>Data Science</li>
+                  <li>Machine Learning</li>
+                  <li>Data Structures</li>
+               </ul>
+            </div> 
+            
+    </div>
+        </div>
+    </div>
+   
+        <div class="registration-wrapper">  
+                <div class="registration-section" id="register">
+                    <div class="registration-text">
+                        <h2 class="register-text">The Best Platform To <br> <span class="highlight-text"> Enroll </span>In Career</h2>
+
+                       </div>
+                    <img src="images/t5.avif" alt="Registration Illustration" class="registration-image">
+
+                    <div class="registration-box">
+                    <h2> <center>Register Form </center> </h2>
+                    <form id="registrationForm">
+                        <div class="input-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required placeholder="Name">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="abc@gmail.com">
+                            <span id="emailError" style="color: red;"></span>
+
+                        </div>
+                        <div class="input-group">
+                            <label for="course">Select Course:</label>
+                            <select id="course" name="course" required>
+                                <option value="">Choose a course...</option>
+                                <option value="artificial_intelligence">Artificial Intelligence</option>
+                                <option value="data_science">Data Science</option>
+                                <option value="data_structure">Data Structures</option>
+                                <option value="machine_learning">Machine Learning</option>
+                            </select>
+                        </div>
+                         <div class="input-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter 8-digit password">
+
+                           
+                        </div>
+                        <div class="input-group">
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm password">
+
+                        </div>
+                        <button type="submit" class="register-btn">Register</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+  
+<script>
+            function isValidEmail(email) {
+                  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                    return regex.test(email);
+}
+
+function setError(element, message) {
+    alert(message);
+    element.focus();
+}
+
+const hasUpperCase = string => /[A-Z]/.test(string);
+const hasLowerCase = string => /[a-z]/.test(string);
+const hasSpecialChar = string => /[!@#$%^&*(),.?":{}|<div>]/.test(string);
+
+function handleRegistration() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+
+    // Validate Email
+    if (!isValidEmail(email)) {
+        setError(email, 'Provide a valid email address');
+        return;
+    }
+
+    // Validate Password
+    if (password.length < 8 ) {
+        setError(document.getElementById('password'), 'Password must be at least 8 characters.');
+        return;
+    }
+    if (!hasUpperCase(password)) {
+        setError(document.getElementById('password'), 'Password must have at least one uppercase letter.');
+        return;
+    }
+    if (!hasLowerCase(password)) {
+        setError(document.getElementById('password'), 'Password must have at least one lowercase letter.');
+        return;
+    }
+    if (!hasSpecialChar(password)) {
+        setError(document.getElementById('password'), 'Password must have at least one special character.');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        setError(document.getElementById('confirm_password'), "Passwords don't match");
+        return;
+    }
+
+    // You can now process the form (e.g., send it to the server).
+    alert(`Name: ${name}\nEmail: ${email}\nPassword: ${password}`);
+    alert('Provide a valid email address');
+    document.getElementById('emailError').innerText = 'Provide a valid email address';
+
+}
+
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    handleRegistration();
+    document.getElementById("togglePassword").addEventListener("click", function() {
+    toggleVisibility('password');
+});
+
+});
+</script>
+</div>
+</div>
+<footer>
+    <div class="footer-content">
+    <div class="footer-quicklinks">
+        <h5>Quick Links</h5>
+       <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#aboutus">About us</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+       </ul>
+    </div>
+            <div class="footer-section footer-contact">
+            <h3>Contact Us</h3>
+            <p>Email:<a href="mailto:contact@brightsideedu.com">contact@brightsideedu.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <div class="footer-section footer-social">
+            <a href="#"><img src="images/fb.png" alt="Facebook"></a>
+            <a href="#"><img src="images/tw.png" alt="Twitter"></a>
+            <a href="#"><img src="images/lk.png" alt="LinkedIn"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2023 Bright Side Education. All rights reserved.
+    </div>
+</footer>
+</body>
+</html>
